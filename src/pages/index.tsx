@@ -6,26 +6,6 @@ import { graphql, Link } from "gatsby";
 import Layout from "../components/Layout";
 import { countByTag } from "../utils/proc";
 
-interface IIndexPageProps {
-  data: {
-    allMarkdownRemark: {
-      edges: [{
-        node: {
-          excerpt: string;
-          fields: {
-            slug: string;  
-          }
-          frontmatter: {
-            date: string;
-            tags: string[];
-            title: string;
-          }
-        }
-      }]
-    }
-  }  
-}
-
 export const data = graphql`
   query markdown {
     allMarkdownRemark(
@@ -77,7 +57,9 @@ const IndexPage = ({ data }: IIndexPageProps) => {
           {tagsCount.map(([k, v]) => {
             return (
               <div>
+                <a href={`/archives?tag=${k}`}>
                 <p>{k} - {v}</p>
+                </a>
               </div>
             );
           })}

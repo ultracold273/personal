@@ -1,6 +1,8 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 
+import Layout from "../components/Layout";
+
 interface IPostPageProps {
   data: {
     markdownRemark: {
@@ -32,11 +34,13 @@ export const query = graphql`
 const PostPage = ({ data }: IPostPageProps) => {
   const post = data.markdownRemark;
   return (
-    <div>
+    <Layout>
       <h1>{post.frontmatter.title}</h1>
-      <h4>标签：{post.frontmatter.tags.map((tag) => (tag))}</h4>
+      <h4>标签：{post.frontmatter.tags.map((tag) => {
+        return (<a href={`/archives?tag=${tag}`}>{tag} </a>);
+      })}</h4>
       <div dangerouslySetInnerHTML={{ __html: post.html }}/>
-    </div>
+    </Layout>
   );
 }
 
