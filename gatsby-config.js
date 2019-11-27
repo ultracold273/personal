@@ -10,6 +10,12 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/typography/typography`
+      }
+    },
+    {
       resolve: `gatsby-plugin-styled-components`,
       options: {
 
