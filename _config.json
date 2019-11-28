@@ -1,0 +1,14 @@
+{
+  "site": {
+      
+  },
+
+  "theme": {
+    "color": "#DB1105"
+  },
+
+  "menu": [
+    { "name": "归档", "url": "/archives" },
+    { "name": "关于", "url": "/about" }
+  ]
+}
