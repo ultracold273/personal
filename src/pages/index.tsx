@@ -4,6 +4,8 @@ import { Row, Col } from "react-bootstrap";
 import { graphql, Link } from "gatsby";
 
 import Layout from "../components/Layout";
+import SideBar from "../components/SideBar";
+import PostSnippet from "../components/PostSnippet";
 import { countByTag } from "../utils/proc";
 
 export const data = graphql`
@@ -35,35 +37,19 @@ export const data = graphql`
 const IndexPage = ({ data }: IIndexPageProps) => {
   const posts = data.allMarkdownRemark.edges;
   const tags = posts.map((post) => (post.node.frontmatter.tags));
-  const tagsCount = countByTag(tags);
-  tagsCount.sort((a, b) => (a[1] < b[1] ? 1 : -1));
+  const tagsCollection: [string, number][] = countByTag(tags);
+  tagsCollection.sort((a, b) => (a[1] < b[1] ? 1 : -1));
+  console.log(tagsCollection);
   return (
     <Layout>
       <Row>
         <Col lg={8}>
-          {posts.map(({ node }) => {
-            return (
-              <div key={node.id}>
-                <Link to={node.fields.slug}>
-                <h3>{node.frontmatter.title}</h3>
-                </Link>
-                <h4>{node.frontmatter.date}</h4>
-                <p>{node.excerpt}</p>
-              </div>
-            );
-          })}  
+          {posts.map(({ node }) => (
+              <PostSnippet key={node.id} data={node} />
+          ))}
         </Col>
         <Col lg={4}>
-          <h2>标签:</h2>
-          {tagsCount.map(([k, v]) => {
-            return (
-              <div key={k}>
-                <a href={`/archives?tag=${k}`}>
-                <p>{k} - {v}</p>
-                </a>
-              </div>
-            );
-          })}
+          <SideBar dataSource={ tagsCollection }/>
         </Col>
       </Row>
     </Layout>
