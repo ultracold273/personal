@@ -1,7 +1,7 @@
 import Typography from "typography";
 import Wordpress2016 from "typography-theme-wordpress-2016";
 
-import { theme } from "../../_config.yml";
+import { theme } from "../../_config.json";
 
 const fontFamily = ['Noto Serif SC', 'serif'];
 
