@@ -24,7 +24,7 @@ export const query = graphql`
       rawMarkdownBody
       frontmatter {
         title
-        date
+        date(formatString: "YYYY年M月D日")
         tags
       }  
     }
@@ -36,6 +36,7 @@ const PostPage = ({ data }: IPostPageProps) => {
   return (
     <Layout>
       <h1>{post.frontmatter.title}</h1>
+      <time>{post.frontmatter.date}</time>
       <h4>标签：{post.frontmatter.tags.map((tag) => {
         return (<a href={`/archives?tag=${tag}`}>{tag} </a>);
       })}</h4>
