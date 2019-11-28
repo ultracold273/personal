@@ -1,10 +1,7 @@
 import Typography from "typography";
 import Wordpress2016 from "typography-theme-wordpress-2016";
 
-// import { getConfig } from '../utils';
-
-// const { theme } = getConfig();
-const theme = { color: "#DB1105"}
+import { theme } from "../../_config.yml";
 
 const fontFamily = ['Noto Serif SC', 'serif'];
 

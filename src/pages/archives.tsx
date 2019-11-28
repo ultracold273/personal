@@ -1,9 +1,8 @@
 import * as React from "react";
-
+import querystring from "querystring";
 import { graphql, Link } from "gatsby";
 
 import Layout from "../components/Layout";
-import { URLSearchParams } from "url";
 
 export const data = graphql`
   query archive {
@@ -15,6 +14,7 @@ export const data = graphql`
     ) {
       edges {
         node {
+          id
           fields {
             slug
           }
@@ -30,25 +30,22 @@ export const data = graphql`
 `;
 
 const ArchivePage = ({ data, location: { search } }: IArchivesPageProps) => {
-  let tag: string;
+  const query = querystring.parse(search.substring(1));
   let posts;
-  if (search != "") {
-    tag = decodeURI(search).substring(5); // TODO: Not elegant
-  // let searchParams = new URLSearchParams(search);
-  // console.log(searchParams.get("tag"));
-  posts = data.allMarkdownRemark.edges.filter((post) => {
-    return (post.node.frontmatter.tags.includes(tag))
-  });
-  } else {
+  if (Object.keys(query).length == 0) {
     posts = data.allMarkdownRemark.edges;
+  } else {
+    const tag = query.tag as string;  // Maybe harmful
+    posts = data.allMarkdownRemark.edges.filter((post) => 
+      (post.node.frontmatter.tags.includes(tag))
+    );
   }
-  console.log(posts);
   return (
     <Layout>
       {/* <LabelWidget /> */}
       {posts.map(({ node }) => {
         return (
-          <div>
+          <div key={node.id}>
             <Link to={node.fields.slug}>
             <h3>{node.frontmatter.title}</h3>
             </Link>
@@ -57,7 +54,7 @@ const ArchivePage = ({ data, location: { search } }: IArchivesPageProps) => {
         );
       })} 
     </Layout>
-  )
+  );
 };
 
 export default ArchivePage;

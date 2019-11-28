@@ -18,6 +18,7 @@ interface SlugFieldProps {
 }
 
 interface NodeProps {
+  id: string;
   excerpt: string;
   fields: SlugFieldProps;
   frontmatter: FrontMatterProps;

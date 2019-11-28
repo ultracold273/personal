@@ -16,12 +16,13 @@ export const data = graphql`
     ) {
       edges {
         node {
+          id
           excerpt
           fields {
             slug
           }
           frontmatter {
-            date
+            date(formatString: "YYYY年M月D日")
             tags
             title
           }
@@ -42,7 +43,7 @@ const IndexPage = ({ data }: IIndexPageProps) => {
         <Col lg={8}>
           {posts.map(({ node }) => {
             return (
-              <div>
+              <div key={node.id}>
                 <Link to={node.fields.slug}>
                 <h3>{node.frontmatter.title}</h3>
                 </Link>
@@ -56,7 +57,7 @@ const IndexPage = ({ data }: IIndexPageProps) => {
           <h2>标签:</h2>
           {tagsCount.map(([k, v]) => {
             return (
-              <div>
+              <div key={k}>
                 <a href={`/archives?tag=${k}`}>
                 <p>{k} - {v}</p>
                 </a>
