@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Link } from "gatsby";
 
 import Container from "../Container";
+import Logo from "./Logo";
+import NaviBar from "./NaviBar";
 
 interface IHeaderProps {
   height?: number;
@@ -30,9 +32,8 @@ const Header: React.FC<IHeaderProps> = (_, ref) => {
   return (
     <Wrapper visible={true} ref={ref}>
       <Container>
-        <Link to="/">
-          Home
-        </Link>
+        <Logo padding="18px 0" />
+        <NaviBar />
       </Container>  
     </Wrapper>
   );
