@@ -5,6 +5,8 @@ import Container from "../Container";
 import Header from "../Header";
 import Footer from "../Footer";
 
+import 'bootstrap/dist/css/bootstrap-grid.css';
+
 interface IMainProps {
   minHeight: string;
 }
