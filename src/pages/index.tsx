@@ -1,4 +1,5 @@
 import * as React from "react";
+import styled from "styled-components";
 import { Row, Col } from "react-bootstrap";
 
 import { graphql, Link } from "gatsby";
@@ -34,12 +35,18 @@ export const data = graphql`
   }
 `;
 
+const PostWrapper = styled.div`
+`;
+
 const IndexPage = ({ data }: IIndexPageProps) => {
-  const posts = data.allMarkdownRemark.edges;
+  const hidden_tag = "Hidden";
+  const posts = data.allMarkdownRemark.edges.filter((post) => (
+    !post.node.frontmatter.tags.includes(hidden_tag)
+  ));
   const tags = posts.map((post) => (post.node.frontmatter.tags));
   const tagsCollection: [string, number][] = countByTag(tags);
   tagsCollection.sort((a, b) => (a[1] < b[1] ? 1 : -1));
-  console.log(tagsCollection);
+  // console.log(tagsCollection);
   return (
     <Layout>
       <Row>

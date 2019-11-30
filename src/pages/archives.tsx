@@ -33,9 +33,11 @@ const ArchivePage = ({ data, location: { search } }: IArchivesPageProps) => {
   const query = querystring.parse(search.substring(1));
   let posts;
   if (Object.keys(query).length == 0) {
-    posts = data.allMarkdownRemark.edges;
+    posts = data.allMarkdownRemark.edges.filter((post) =>
+      !(post.node.frontmatter.tags.includes("Hidden"))
+    );
   } else {
-    const tag = query.tag as string;  // Maybe harmful
+    const tag = query.tag as string;  // Maybe harmful? type coersion
     posts = data.allMarkdownRemark.edges.filter((post) => 
       (post.node.frontmatter.tags.includes(tag))
     );
@@ -46,7 +48,7 @@ const ArchivePage = ({ data, location: { search } }: IArchivesPageProps) => {
       {posts.map(({ node }) => {
         return (
           <div key={node.id}>
-            <Link to={node.fields.slug}>
+            <Link to={`/posts`.concat(node.fields.slug)}>
             <h3>{node.frontmatter.title}</h3>
             </Link>
             {/* <h4>{node.frontmatter.date}</h4> */}
