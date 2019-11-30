@@ -41,7 +41,7 @@ const Label = styled.a`
 const PostSnippet: React.FC<IPostSnippetProps> = ({ data }) => {
   return (
     <header>
-      <Link to={data.fields.slug}>
+      <Link to={`/posts`.concat(data.fields.slug)}>
         <Title>{data.frontmatter.title}</Title>
       </Link>
       <Meta>
