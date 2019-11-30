@@ -32,7 +32,7 @@ Wordpress2016.overrideThemeStyles = ({ rhythm }) => ({
   },
   a: {
     boxShadow: `0 1px 0 0 ${theme.color}`,
-    color: theme.color,
+    color: `${theme.color}`,
     textDecoration: 'none',
   },
   p: {

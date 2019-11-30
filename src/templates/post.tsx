@@ -38,7 +38,7 @@ const PostPage = ({ data }: IPostPageProps) => {
       <h1>{post.frontmatter.title}</h1>
       <time>{post.frontmatter.date}</time>
       <h4>标签：{post.frontmatter.tags.map((tag) => {
-        return (<a href={`/archives?tag=${tag}`}>{tag} </a>);
+        return (<a href={`/archives?tag=${tag}`}>{tag}</a> );
       })}</h4>
       <div dangerouslySetInnerHTML={{ __html: post.html }}/>
     </Layout>

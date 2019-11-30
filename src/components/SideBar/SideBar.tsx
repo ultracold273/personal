@@ -18,15 +18,15 @@ const SideBar: React.FC<ISideBarProps> = (props) => {
   return (
     <Wrapper>
     <h2>标签:</h2>
-          {tags.map(([k, v]) => {
-            return (
-              <div key={k}>
-                <a href={`/archives?tag=${k}`}>
-                <p>{k} - {v}</p>
-                </a>
-              </div>
-            );
-    })}
+      {tags.map(([k, v]) => {
+        return (
+          <div key={k}>
+            <a href={`/archives?tag=${k}`}>
+            <p>{k} - {v}</p>
+            </a>
+          </div>
+        );
+      })}
     </Wrapper>
   );
 }
