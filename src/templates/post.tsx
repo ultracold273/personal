@@ -3,20 +3,6 @@ import { graphql } from "gatsby";
 
 import Layout from "../components/Layout";
 
-interface IPostPageProps {
-  data: {
-    markdownRemark: {
-      html: string;
-      rawMarkdownBody: string;
-      frontmatter: {
-        title: string;
-        date: string;
-        tags: [];
-      }
-    }
-  }
-}
-
 export const query = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {

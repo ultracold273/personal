@@ -46,3 +46,17 @@ interface IArchivesPageProps {
     search: string;
   }
 }
+
+interface IPostPageProps {
+  data: {
+    markdownRemark: {
+      html: string;
+      rawMarkdownBody: string;
+      frontmatter: {
+        title: string;
+        date: string;
+        tags: [];
+      }
+    }
+  }
+}

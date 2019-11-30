@@ -18,7 +18,7 @@ export const query = graphql`
   }
 `;
 
-const AboutPage = ({ data }) => {
+const AboutPage = ({ data }: IPostPageProps) => {
   const post = data.markdownRemark;
   return (
     <Layout>
