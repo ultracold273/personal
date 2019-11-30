@@ -31,7 +31,6 @@ exports.createPages = async ({ actions, graphql }) => {
   data.allMarkdownRemark.edges.forEach(edge => {
     const slug = edge.node.fields.slug;
     const slugPath = `/posts`.concat(slug)
-    console.log(slugPath)
     actions.createPage({
       path: slugPath,
       component: require.resolve(`./src/templates/post.tsx`),
