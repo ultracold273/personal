@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import LabelWidget from "../LabelWidget";
 
 interface ISideBarProps {
   dataSource: [string, number][];
@@ -18,7 +19,7 @@ const SideBar: React.FC<ISideBarProps> = (props) => {
   return (
     <Wrapper>
     <h2>标签:</h2>
-      {tags.map(([k, v]) => {
+      {/* {tags.map(([k, v]) => {
         return (
           <div key={k}>
             <a href={`/archives?tag=${k}`}>
@@ -26,7 +27,8 @@ const SideBar: React.FC<ISideBarProps> = (props) => {
             </a>
           </div>
         );
-      })}
+      })} */}
+      <LabelWidget labels={tags} />
     </Wrapper>
   );
 }

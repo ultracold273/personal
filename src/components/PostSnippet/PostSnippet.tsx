@@ -25,19 +25,6 @@ const DateTime = styled.time`
   margin-right: 10px;
 `;
 
-const Labels = styled.span`
-  margin-right: 10px;
-`;
-
-const Label = styled.a`
-  box-shadow: none;
-  cursor: pointer;
-
-  & + & {
-    margin-left: 5px;
-  }
-`;
-
 const PostSnippet: React.FC<IPostSnippetProps> = ({ data }) => {
   return (
     <header>
