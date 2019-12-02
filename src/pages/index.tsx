@@ -49,13 +49,13 @@ const IndexPage = ({ data }: IIndexPageProps) => {
   // console.log(tagsCollection);
   return (
     <Layout>
-      <Row>
+      <Row className="justify-content-md-center">
         <Col lg={8}>
           {posts.map(({ node }) => (
               <PostSnippet key={node.id} data={node} />
           ))}
         </Col>
-        <Col lg={4}>
+        <Col lg={2}>
           <SideBar dataSource={ tagsCollection }/>
         </Col>
       </Row>

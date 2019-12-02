@@ -1,5 +1,5 @@
 import * as React from "react";
-
+import { Row, Col } from "react-bootstrap";
 import { graphql } from "gatsby";
 
 import Layout from "../components/Layout";
@@ -22,9 +22,13 @@ const AboutPage = ({ data }: IPostPageProps) => {
   const post = data.markdownRemark;
   return (
     <Layout>
-      <h1>{post.frontmatter.title}</h1>
-      <time>{post.frontmatter.date}</time>
-      <div dangerouslySetInnerHTML={{ __html: post.html }}/>
+      <Row className="justify-content-md-center">
+        <Col lg={8}>
+          <h1>{post.frontmatter.title}</h1>
+          <time>{post.frontmatter.date}</time>
+          <div dangerouslySetInnerHTML={{ __html: post.html }}/>
+        </Col>
+      </Row>
     </Layout>
   );
 }
