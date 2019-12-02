@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import { Link } from "gatsby";
+import useWindowScroll from "react-use/lib/useWindowScroll";
 
 import Container from "../Container";
 import Logo from "./Logo";
@@ -29,10 +29,23 @@ const Wrapper = styled.header<IWrapperProps>`
 `;
 
 const Header: React.FC<IHeaderProps> = (_, ref) => {
+  const lastY = React.useRef(0);
+  const [visible, setVisible] = React.useState(true);
+
+  const { y } = useWindowScroll();
+  React.useEffect(() => {
+    const height = ref.current.offsetHeight;
+    const outrideHeader = y < height;
+    const isScrollUp = y < lastY.current;
+
+    setVisible(outrideHeader || isScrollUp);
+    lastY.current = y;
+  }, [y, ref]);
+
   return (
-    <Wrapper visible={true} ref={ref}>
+    <Wrapper visible={visible} ref={ref}>
       <Container>
-        <Logo padding="18px 0" />
+        <Logo padding="16px 0" />
         <NaviBar />
       </Container>  
     </Wrapper>
