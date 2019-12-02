@@ -1,7 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
 import { Row, Col } from "react-bootstrap";
-
 import { graphql, Link } from "gatsby";
 
 import Layout from "../components/Layout";

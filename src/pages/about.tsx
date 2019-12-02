@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Row, Col } from "react-bootstrap";
 import { graphql } from "gatsby";
+import { Row, Col } from "react-bootstrap";
 
 import Layout from "../components/Layout";
 

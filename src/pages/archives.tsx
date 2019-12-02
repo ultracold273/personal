@@ -1,5 +1,6 @@
 import * as React from "react";
 import querystring from "querystring";
+import { Row, Col } from "react-bootstrap";
 import { graphql, Link } from "gatsby";
 import { countByTag } from "../utils/proc";
 
@@ -48,17 +49,21 @@ const ArchivePage = ({ data, location: { search } }: IArchivesPageProps) => {
   }
   return (
     <Layout>
-      <LabelWidget labels={ tagsCollection } />
-      {posts.map(({ node }) => {
-        return (
-          <div key={node.id}>
-            <Link to={`/posts`.concat(node.fields.slug)}>
-            <h3>{node.frontmatter.title}</h3>
-            </Link>
-            {/* <h4>{node.frontmatter.date}</h4> */}
-          </div>
-        );
-      })} 
+      <Row className="justify-content-md-center">
+        <Col lg={8}>
+          <LabelWidget labels={ tagsCollection } />
+          {posts.map(({ node }) => {
+            return (
+              <div key={node.id}>
+                <Link to={`/posts`.concat(node.fields.slug)}>
+                <h3>{node.frontmatter.title}</h3>
+                </Link>
+                {/* <h4>{node.frontmatter.date}</h4> */}
+              </div>
+            );
+          })}
+      </Col>
+      </Row>
     </Layout>
   );
 };
