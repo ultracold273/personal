@@ -1,8 +1,10 @@
 import * as React from "react";
 import querystring from "querystring";
 import { graphql, Link } from "gatsby";
+import { countByTag } from "../utils/proc";
 
 import Layout from "../components/Layout";
+import LabelWidget from "../components/LabelWidget";
 
 export const data = graphql`
   query archive {
@@ -31,12 +33,14 @@ export const data = graphql`
 
 const ArchivePage = ({ data, location: { search } }: IArchivesPageProps) => {
   const query = querystring.parse(search.substring(1));
-  let posts;
-  if (Object.keys(query).length == 0) {
-    posts = data.allMarkdownRemark.edges.filter((post) =>
-      !(post.node.frontmatter.tags.includes("Hidden"))
-    );
-  } else {
+  let posts = data.allMarkdownRemark.edges.filter((post) =>
+    !(post.node.frontmatter.tags.includes("Hidden"))
+  );
+  const tags = posts.map((post) => (post.node.frontmatter.tags));
+  const tagsCollection: [string, number][] = countByTag(tags);
+  tagsCollection.sort((a, b) => (a[1] < b[1] ? 1 : -1));
+  
+  if (Object.keys(query).length != 0) {
     const tag = query.tag as string;  // Maybe harmful? type coersion
     posts = data.allMarkdownRemark.edges.filter((post) => 
       (post.node.frontmatter.tags.includes(tag))
@@ -44,7 +48,7 @@ const ArchivePage = ({ data, location: { search } }: IArchivesPageProps) => {
   }
   return (
     <Layout>
-      {/* <LabelWidget /> */}
+      <LabelWidget labels={ tagsCollection } />
       {posts.map(({ node }) => {
         return (
           <div key={node.id}>
