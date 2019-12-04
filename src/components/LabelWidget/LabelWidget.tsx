@@ -15,6 +15,7 @@ const Label = styled.a`
   font-size: 14px;
   cursor: pointer;
   padding: 2px 2px;
+  display: inline-block;
 
   & + & {
     margin-left: 5px;

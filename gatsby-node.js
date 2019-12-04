@@ -1,4 +1,3 @@
-// import { createFilePath } from "gatsby-source-filesystem";
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.onCreateNode = ({ node, getNode, actions }) => {

@@ -31,9 +31,11 @@ const NaviBar: React.FC = () => {
     <Nav>
       <List>
         {(menu || []).map(({ name, url }) => (
-          <Link to={url} key={name}>
-            <Item>{name}</Item>  
-          </Link>
+          <Item>
+            <Link to={url} key={name}>
+              {name}
+            </Link>
+          </Item>
         ))}
       </List>  
     </Nav>

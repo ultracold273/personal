@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 
 import Container from "../Container";
+import { site } from "../../../_config.json";
 
 const Wrapper = styled.footer`
   padding: 30px 0 40px;
@@ -22,16 +23,23 @@ const Right = styled.div`
   }
 `;
 
+const Center = styled.div`
+  float: right;
+`;
+
 const Footer: React.FC = (_, ref) => {
   return (
     <Wrapper ref={ref}>
       <Container>
-        <Left>
-          Blalabalal xiaomoxian
+        {/* <Left>
+          {site.since}
         </Left>
         <Right>
           lalalal
-        </Right>
+        </Right> */}
+        <Center>
+          Lingxiao @ 2019
+        </Center>
       </Container>
     </Wrapper>
   );

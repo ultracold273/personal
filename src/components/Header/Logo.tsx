@@ -1,6 +1,5 @@
 import * as React from "react";
 import styled from "styled-components";
-import { Link } from "gatsby";
 
 interface ILogoProps {
   padding?: string;
@@ -24,6 +23,10 @@ const Title = styled.h1`
   text-transform: uppercase;
 `;
 
+const Link = styled.a`
+  text-decoration: none;
+`;
+
 const Icon = styled.img`
   display: inline-block;
   position: relative;
@@ -37,12 +40,15 @@ const Logo: React.FC<ILogoProps> = (props) => {
   const { padding = "0" } = props;
   return (
     <Wrapper padding={padding}>
-      <Link to="/">
+      {/* <Link href="/"> */}
+      <a href="/">
         <Title>
           {/* <Icon /> */}
-          <span>Lingxiao</span>  
+          {/* <span>Lingxiao</span>   */}
+          Lingxiao
         </Title>
-      </Link>
+      </a>
+      {/* </Link> */}
     </Wrapper>
   );
 }
