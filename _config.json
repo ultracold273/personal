@@ -1,13 +1,14 @@
 {
   "site": {
-      
+    "since": 2019
   },
 
   "theme": {
-    "color": "#DB1105"
+    "color": "#452dfb"
   },
 
   "menu": [
+    { "name": "博客", "url": "/blog" },
     { "name": "归档", "url": "/archives" },
     { "name": "关于", "url": "/about" }
   ]
