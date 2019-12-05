@@ -35,6 +35,7 @@ export const data = graphql`
 `;
 
 const PostWrapper = styled.div`
+  margin-top: 20px;
 `;
 
 const IndexPage = ({ data }: IIndexPageProps) => {
@@ -50,9 +51,11 @@ const IndexPage = ({ data }: IIndexPageProps) => {
     <Layout>
       <Row className="justify-content-md-center">
         <Col lg={8}>
+          <PostWrapper>
           {posts.map(({ node }) => (
               <PostSnippet key={node.id} data={node} />
           ))}
+          </PostWrapper>
         </Col>
         <Col lg={2}>
           <SideBar dataSource={ tagsCollection }/>

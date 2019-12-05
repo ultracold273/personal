@@ -4,6 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import { graphql } from "gatsby";
 
 import Layout from "../components/Layout";
+import { theme } from "../../_config.json";
 
 export const query = graphql`
   query($slug: String!) {
@@ -30,13 +31,17 @@ const Label = styled.a`
   }
 `;
 
+const Title = styled.h1`
+  color: ${theme.color}
+`;
+
 const PostPage = ({ data }: IPostPageProps) => {
   const post = data.markdownRemark;
   return (
     <Layout>
       <Row className="justify-content-md-center">
         <Col lg={8}>
-          <h1>{post.frontmatter.title}</h1>
+          <Title>{post.frontmatter.title}</Title>
           <time>{post.frontmatter.date}</time>
           <h4>标签：{post.frontmatter.tags.map((tag) => {
             return (<Label href={`/archives?tag=${tag}`}>#{tag}</Label> );
