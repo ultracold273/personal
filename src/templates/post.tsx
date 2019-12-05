@@ -4,6 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import { graphql } from "gatsby";
 
 import Layout from "../components/Layout";
+import Markdown from "../components/Markdown";
 import { theme } from "../../_config.json";
 
 export const query = graphql`
@@ -46,7 +47,8 @@ const PostPage = ({ data }: IPostPageProps) => {
           <h4>标签：{post.frontmatter.tags.map((tag) => {
             return (<Label href={`/archives?tag=${tag}`}>#{tag}</Label> );
           })}</h4>
-          <div dangerouslySetInnerHTML={{ __html: post.html }}/>
+          {/* <div dangerouslySetInnerHTML={{ __html: post.html }}/> */}
+          <Markdown source={post.rawMarkdownBody} />
         </Col>
       </Row>
     </Layout>

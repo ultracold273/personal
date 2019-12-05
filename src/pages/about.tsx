@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import { Row, Col } from "react-bootstrap";
 
 import Layout from "../components/Layout";
+import Markdown from "../components/Markdown";
 
 export const query = graphql`
   query about {
@@ -26,7 +27,8 @@ const AboutPage = ({ data }: IPostPageProps) => {
         <Col lg={8}>
           <h1>{post.frontmatter.title}</h1>
           <time>{post.frontmatter.date}</time>
-          <div dangerouslySetInnerHTML={{ __html: post.html }}/>
+          {/* <div dangerouslySetInnerHTML={{ __html: post.html }}/> */}
+          <Markdown source={post.rawMarkdownBody} />
         </Col>
       </Row>
     </Layout>
