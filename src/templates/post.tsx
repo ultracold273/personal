@@ -5,7 +5,7 @@ import { graphql } from "gatsby";
 
 import Layout from "../components/Layout";
 import Markdown from "../components/Markdown";
-import { theme } from "../../_config.json";
+import { specialTags, theme } from "../../_config.json";
 
 export const query = graphql`
   query($slug: String!) {
@@ -38,7 +38,7 @@ const Title = styled.h1`
 
 const PostPage = ({ data }: IPostPageProps) => {
   const post = data.markdownRemark;
-  const isMath = post.frontmatter.tags.includes("Mark");
+  const isMath = post.frontmatter.tags.includes(specialTags.math);
   return (
     <Layout>
       <Row className="justify-content-md-center">

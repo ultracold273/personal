@@ -6,6 +6,7 @@ import { countByTag } from "../utils/proc";
 
 import Layout from "../components/Layout";
 import LabelWidget from "../components/LabelWidget";
+import { specialTags } from "../../_config.json";
 
 export const data = graphql`
   query archive {
@@ -35,7 +36,7 @@ export const data = graphql`
 const ArchivePage = ({ data, location: { search } }: IArchivesPageProps) => {
   const query = querystring.parse(search.substring(1));
   let posts = data.allMarkdownRemark.edges.filter((post) =>
-    !(post.node.frontmatter.tags.includes("Hidden"))
+    !(post.node.frontmatter.tags.includes(specialTags.hidden))
   );
   const tags = posts.map((post) => (post.node.frontmatter.tags));
   const tagsCollection: [string, number][] = countByTag(tags);

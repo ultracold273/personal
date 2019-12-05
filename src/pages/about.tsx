@@ -5,6 +5,8 @@ import { Row, Col } from "react-bootstrap";
 import Layout from "../components/Layout";
 import Markdown from "../components/Markdown";
 
+import { specialTags } from "../../_config.json";
+
 export const query = graphql`
   query about {
     markdownRemark(fields: { slug: { eq: "/about-me/" } }) {
@@ -21,7 +23,7 @@ export const query = graphql`
 
 const AboutPage = ({ data }: IPostPageProps) => {
   const post = data.markdownRemark;
-  const isMath = post.frontmatter.tags.includes("Math");
+  const isMath = post.frontmatter.tags.includes(specialTags.math);
   return (
     <Layout>
       <Row className="justify-content-md-center">

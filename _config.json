@@ -8,6 +8,11 @@
     "color": "#452dfb"
   },
 
+  "specialTags": {
+    "math": "Math",
+    "hidden": "Hidden"
+  },
+
   "menu": [
     { "name": "博客", "url": "/blog" },
     { "name": "归档", "url": "/archives" },

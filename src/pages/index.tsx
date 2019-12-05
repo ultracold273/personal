@@ -7,6 +7,7 @@ import Layout from "../components/Layout";
 import SideBar from "../components/SideBar";
 import PostSnippet from "../components/PostSnippet";
 import { countByTag } from "../utils/proc";
+import { specialTags } from "../../_config.json";
 
 export const data = graphql`
   query markdown {
@@ -39,9 +40,8 @@ const PostWrapper = styled.div`
 `;
 
 const IndexPage = ({ data }: IIndexPageProps) => {
-  const hidden_tag = "Hidden";
   const posts = data.allMarkdownRemark.edges.filter((post) => (
-    !post.node.frontmatter.tags.includes(hidden_tag)
+    !post.node.frontmatter.tags.includes(specialTags.hidden)
   ));
   const tags = posts.map((post) => (post.node.frontmatter.tags));
   const tagsCollection: [string, number][] = countByTag(tags);
