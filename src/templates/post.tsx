@@ -38,6 +38,7 @@ const Title = styled.h1`
 
 const PostPage = ({ data }: IPostPageProps) => {
   const post = data.markdownRemark;
+  const isMath = post.frontmatter.tags.includes("Mark");
   return (
     <Layout>
       <Row className="justify-content-md-center">
@@ -48,7 +49,7 @@ const PostPage = ({ data }: IPostPageProps) => {
             return (<Label href={`/archives?tag=${tag}`}>#{tag}</Label> );
           })}</h4>
           {/* <div dangerouslySetInnerHTML={{ __html: post.html }}/> */}
-          <Markdown source={post.rawMarkdownBody} />
+          <Markdown source={post.rawMarkdownBody} math={isMath}/>
         </Col>
       </Row>
     </Layout>

@@ -7,6 +7,9 @@
 // And to shim assets, use (one file extension per `declare`):
 // declare module "*.png"
 
+declare module "react-mathjax";
+declare module "remark-math";
+
 interface FrontMatterProps {
   date: string;
   tags: string[];
@@ -52,11 +55,7 @@ interface IPostPageProps {
     markdownRemark: {
       html: string;
       rawMarkdownBody: string;
-      frontmatter: {
-        title: string;
-        date: string;
-        tags: [];
-      }
+      frontmatter: FrontMatterProps;
     }
   }
 }

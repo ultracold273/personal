@@ -21,6 +21,7 @@ export const query = graphql`
 
 const AboutPage = ({ data }: IPostPageProps) => {
   const post = data.markdownRemark;
+  const isMath = post.frontmatter.tags.includes("Math");
   return (
     <Layout>
       <Row className="justify-content-md-center">
@@ -28,7 +29,7 @@ const AboutPage = ({ data }: IPostPageProps) => {
           <h1>{post.frontmatter.title}</h1>
           <time>{post.frontmatter.date}</time>
           {/* <div dangerouslySetInnerHTML={{ __html: post.html }}/> */}
-          <Markdown source={post.rawMarkdownBody} />
+          <Markdown source={post.rawMarkdownBody} math={isMath} />
         </Col>
       </Row>
     </Layout>
