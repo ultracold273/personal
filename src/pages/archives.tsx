@@ -4,6 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import { graphql, Link } from "gatsby";
 import { countByTag } from "../utils/proc";
 
+import SEO from "../components/SEO";
 import Layout from "../components/Layout";
 import LabelWidget from "../components/LabelWidget";
 import { specialTags } from "../../_config.json";
@@ -49,23 +50,26 @@ const ArchivePage = ({ data, location: { search } }: IArchivesPageProps) => {
     );
   }
   return (
-    <Layout>
-      <Row className="justify-content-md-center">
-        <Col lg={8}>
-          <LabelWidget labels={ tagsCollection } />
-          {posts.map(({ node }) => {
-            return (
-              <div key={node.id}>
-                <Link to={`/posts`.concat(node.fields.slug)}>
-                <h3>{node.frontmatter.title}</h3>
-                </Link>
-                {/* <h4>{node.frontmatter.date}</h4> */}
-              </div>
-            );
-          })}
-      </Col>
-      </Row>
-    </Layout>
+    <>
+      <SEO post={{ title: "归档", path: "/archives" }} />
+      <Layout>
+        <Row className="justify-content-md-center">
+          <Col lg={8}>
+            <LabelWidget labels={ tagsCollection } />
+            {posts.map(({ node }) => {
+              return (
+                <div key={node.id}>
+                  <Link to={`/posts`.concat(node.fields.slug)}>
+                  <h3>{node.frontmatter.title}</h3>
+                  </Link>
+                  {/* <h4>{node.frontmatter.date}</h4> */}
+                </div>
+              );
+            })}
+        </Col>
+        </Row>
+      </Layout>
+    </>
   );
 };
 

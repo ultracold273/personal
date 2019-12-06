@@ -2,6 +2,7 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import { Row, Col } from "react-bootstrap";
 
+import SEO from "../components/SEO";
 import Layout from "../components/Layout";
 import Markdown from "../components/Markdown";
 
@@ -25,16 +26,19 @@ const AboutPage = ({ data }: IPostPageProps) => {
   const post = data.markdownRemark;
   const isMath = post.frontmatter.tags.includes(specialTags.math);
   return (
-    <Layout>
-      <Row className="justify-content-md-center">
-        <Col lg={8}>
-          <h1>{post.frontmatter.title}</h1>
-          <time>{post.frontmatter.date}</time>
-          {/* <div dangerouslySetInnerHTML={{ __html: post.html }}/> */}
-          <Markdown source={post.rawMarkdownBody} math={isMath} />
-        </Col>
-      </Row>
-    </Layout>
+    <>
+      <SEO post={{ title: "关于", path: "/about"}} />
+      <Layout>
+        <Row className="justify-content-md-center">
+          <Col lg={8}>
+            <h1>{post.frontmatter.title}</h1>
+            <time>{post.frontmatter.date}</time>
+            {/* <div dangerouslySetInnerHTML={{ __html: post.html }}/> */}
+            <Markdown source={post.rawMarkdownBody} math={isMath} />
+          </Col>
+        </Row>
+      </Layout>
+    </>
   );
 }
 

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Row, Col } from "react-bootstrap";
 import { graphql, Link } from "gatsby";
 
+import SEO from "../components/SEO";
 import Layout from "../components/Layout";
 import SideBar from "../components/SideBar";
 import PostSnippet from "../components/PostSnippet";
@@ -48,20 +49,23 @@ const IndexPage = ({ data }: IIndexPageProps) => {
   tagsCollection.sort((a, b) => (a[1] < b[1] ? 1 : -1));
   // console.log(tagsCollection);
   return (
-    <Layout>
-      <Row className="justify-content-md-center">
-        <Col lg={8}>
-          <PostWrapper>
-          {posts.map(({ node }) => (
-              <PostSnippet key={node.id} data={node} />
-          ))}
-          </PostWrapper>
-        </Col>
-        <Col lg={2}>
-          <SideBar dataSource={ tagsCollection }/>
-        </Col>
-      </Row>
-    </Layout>
+    <>
+      <SEO post={{}} />
+      <Layout>
+        <Row className="justify-content-md-center">
+          <Col lg={8}>
+            <PostWrapper>
+            {posts.map(({ node }) => (
+                <PostSnippet key={node.id} data={node} />
+            ))}
+            </PostWrapper>
+          </Col>
+          <Col lg={2}>
+            <SideBar dataSource={ tagsCollection }/>
+          </Col>
+        </Row>
+      </Layout>
+    </>
   );
 };
 

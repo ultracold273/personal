@@ -54,6 +54,7 @@ interface IPostPageProps {
   data: {
     markdownRemark: {
       html: string;
+      fields: SlugFieldProps;
       rawMarkdownBody: string;
       frontmatter: FrontMatterProps;
     }

@@ -1,4 +1,10 @@
 module.exports = {
+  siteMetadata: {
+    title: "Lingxiao",
+    description: "personal website, a researcher, programming involved in computer systems and AI-related stuff. Occasionally write essays.",
+    baseUrl: "https://lxwei.me",
+  },
+
   plugins: [
     `gatsby-plugin-typescript`,
     `gatsby-transformer-remark`,
