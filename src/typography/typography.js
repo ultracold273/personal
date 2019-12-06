@@ -3,10 +3,12 @@ import Wordpress2016 from "typography-theme-wordpress-2016";
 
 import { theme } from "../../_config.json";
 
-const fontFamily = ['Noto Serif', 'serif'];
+// const fontFamily = ["Lora", "Noto Serif SC", "serif"];
+// const fontFamily = ["Lora", "Noto Serif SC"];
 
-Wordpress2016.headerFontFamily = fontFamily;
-Wordpress2016.bodyFontFamily = fontFamily;
+// Wordpress2016.headerFontFamily = fontFamily;
+// Wordpress2016.bodyFontFamily = fontFamily;
+Wordpress2016.baseFontSize = "18px";
 
 Wordpress2016.overrideThemeStyles = ({ rhythm }) => ({
   body: {
@@ -28,7 +30,7 @@ Wordpress2016.overrideThemeStyles = ({ rhythm }) => ({
     fontSize: '22px',
   },
   h3: {
-    fontSize: '18px',
+    fontSize: '20px',
   },
   a: {
     boxShadow: `0 1px 0 0 ${theme.color}`,
