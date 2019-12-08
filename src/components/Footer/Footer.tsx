@@ -9,6 +9,7 @@ const Wrapper = styled.footer`
   padding: 30px 0 40px;
   background-color: rgba(0, 0, 0, 0.03);
   overflow: auto;
+  font-size: 16px;
 `;
 
 const Left = styled.div`

@@ -6,6 +6,7 @@ import { theme, menu } from "../../../_config.json";
 
 const Nav = styled.nav`
   float: right;
+  font-size: 16px;
 `;
 
 const List = styled.ul`
