@@ -46,8 +46,9 @@ const BlogPage = ({ data }: IIndexPageProps) => {
   ));
   const tags = posts.map((post) => (post.node.frontmatter.tags));
   const tagsCollection: [string, number][] = countByTag(tags);
+  // Remove math tags
+  tagsCollection.filter((tagPair) => (tagPair[0] !== specialTags.math));
   tagsCollection.sort((a, b) => (a[1] < b[1] ? 1 : -1));
-  // console.log(tagsCollection);
   return (
     <>
       <SEO post={{ title: "博客", path: "/blog" }} />
